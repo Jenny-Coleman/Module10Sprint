@@ -247,7 +247,7 @@ public class SearchFrm extends javax.swing.JFrame {
             }
             
             Statement Pstmt = (Statement) Main.con.createStatement();
-            String Psql = "SELECT * FROM tblparent WHERE (Name LIKE '"+fname+"' AND Surname LIKE '"+fsname+"') OR (StudentID LIKE "+fid+")";
+            String Psql = "SELECT * FROM tblparent WHERE (Name LIKE '"+fname+"' AND Surname LIKE '"+fsname+"') OR (ParentID LIKE "+fid+")";
             ResultSet Prs = Pstmt.executeQuery(Psql);
 
             Prs.beforeFirst();
