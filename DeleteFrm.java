@@ -192,13 +192,14 @@ public class DeleteFrm extends javax.swing.JFrame {
             Ptm.setRowCount(0);
 
             while (Prs.next()) {
+                String id = Integer.toString(Prs.getInt("ParentID"));
                 String name = Prs.getString("Name");
                 String sname = Prs.getString("Surname");
                 String contact = Prs.getString("ContactNumber");
                 String address = Prs.getString("Address");
                 String enrolled = Integer.toString(Prs.getInt("NumberEnrolled"));
                 
-                String[] data = {name, sname, contact, address, enrolled};
+                String[] data = {id, name, sname, contact, address, enrolled};
                 
                 Ptm.addRow(data);
             }
@@ -244,13 +245,14 @@ public class DeleteFrm extends javax.swing.JFrame {
             Ptm.setRowCount(0);
 
             while (Prs.next()) {
+                String id = Integer.toString(Prs.getInt("ParentID"));
                 String name = Prs.getString("Name");
                 String sname = Prs.getString("Surname");
                 String contact = Prs.getString("ContactNumber");
                 String address = Prs.getString("Address");
                 String enrolled = Integer.toString(Prs.getInt("NumberEnrolled"));
                 
-                String[] data = {name, sname, contact, address, enrolled};
+                String[] data = {id, name, sname, contact, address, enrolled};
                 
                 Ptm.addRow(data);
             }
