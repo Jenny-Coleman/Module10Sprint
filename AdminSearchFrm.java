@@ -15,12 +15,12 @@ import javax.swing.table.*;
  *
  * @author Work
  */
-public class SearchFrm extends javax.swing.JFrame {
+public class AdminSearchFrm extends javax.swing.JFrame {
 
     /**
      * Creates new form SearchFrm
      */
-    public SearchFrm() {
+    public AdminSearchFrm() {
         initComponents();
         
         
@@ -46,8 +46,8 @@ public class SearchFrm extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tblParent = new javax.swing.JTable();
         btnBack = new javax.swing.JButton();
-        label2 = new java.awt.Label();
-        edtId = new java.awt.TextField();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblTeacher = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Search");
@@ -57,14 +57,14 @@ public class SearchFrm extends javax.swing.JFrame {
 
         tblStudent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Surname", "Date of Birth", "Gender", "Grade"
+                "ID", "Name", "Surname", "Date of Birth", "Gender", "Grade", "Password"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true
+                false, true, true, true, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -90,14 +90,14 @@ public class SearchFrm extends javax.swing.JFrame {
 
         tblParent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Name", "Surname", "Contact Number", "Address", "Children enrolled"
+                "ID", "Name", "Surname", "Contact Number", "Address", "Children enrolled", "Password"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true
+                false, true, true, true, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -113,105 +113,87 @@ public class SearchFrm extends javax.swing.JFrame {
             }
         });
 
-        label2.setText("ID:");
+        tblTeacher.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Name", "Surname", "Grade", "Username", "Password"
+            }
+        ));
+        jScrollPane3.setViewportView(tblTeacher);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2)
-                        .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(250, 250, 250)
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(252, 252, 252))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(245, 245, 245)
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addGap(53, 53, 53)
-                                .addComponent(edtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(245, 245, 245)
+                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(104, 104, 104)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(53, 53, 53)
+                                        .addComponent(edtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(65, 65, 65)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(edtSname)
-                                    .addComponent(edtId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(102, 102, 102)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(127, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(edtSname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(102, 102, 102)
+                                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(edtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(edtSname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(edtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(edtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(edtSname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        String fname = "%";
-        String fsname = "%";
-        
-        int fid = 0;
-        
-        if (!edtId.getText().equals("")){
-            String sid = edtId.getText();
-            for (int i = 0; i < sid.length(); i++) 
-            {
-                if (!Character.isDigit(sid.charAt(i))) 
-                {
-                    JOptionPane.showMessageDialog(null, "Student ID is invalid type (enter a number)");
-                    fid = -1;
-                }  
-                else
-                {
-                    fid = fid*10+(sid.charAt(i) - '0');
-                }
-            }
-        }
+        String fname = "";
+        String fsname = "";
         
         if (!edtName.getText().equals("")){
             fname = edtName.getText();
@@ -226,7 +208,7 @@ public class SearchFrm extends javax.swing.JFrame {
             pro.createConnection();
             
             Statement Sstmt = (Statement) Main.con.createStatement();
-            String Ssql = "SELECT * FROM tblstudent WHERE (Name LIKE '"+fname+"' AND Surname LIKE '"+fsname+"') OR (StudentID LIKE "+fid+")";
+            String Ssql = "SELECT * FROM tblstudent WHERE (Name LIKE '%"+fname+"%' AND Surname LIKE '%"+fsname+"%')";
             ResultSet Srs = Sstmt.executeQuery(Ssql);
 
             Srs.beforeFirst();
@@ -240,14 +222,15 @@ public class SearchFrm extends javax.swing.JFrame {
                 String dob = (Srs.getDate("DateOfBirth")).toString();
                 String gender = Srs.getString("Gender");
                 String grade = Integer.toString(Srs.getInt("Grade"));
+                String pswd = Srs.getString("Password");
                 
-                String[] data = {id, name, sname, dob, gender, grade};
+                String[] data = {id, name, sname, dob, gender, grade, pswd};
                 
                 Stm.addRow(data);
             }
             
             Statement Pstmt = (Statement) Main.con.createStatement();
-            String Psql = "SELECT * FROM tblparent WHERE (Name LIKE '"+fname+"' AND Surname LIKE '"+fsname+"') OR (ParentID LIKE "+fid+")";
+            String Psql = "SELECT * FROM tblparent WHERE (Name LIKE '%"+fname+"%' AND Surname LIKE '%"+fsname+"%')";
             ResultSet Prs = Pstmt.executeQuery(Psql);
 
             Prs.beforeFirst();
@@ -261,10 +244,32 @@ public class SearchFrm extends javax.swing.JFrame {
                 String contact = Prs.getString("ContactNumber");
                 String address = Prs.getString("Address");
                 String enrolled = Integer.toString(Prs.getInt("NumberEnrolled"));
+                String pswd = Prs.getString("Password");
                 
-                String[] data = {id, name, sname, contact, address, enrolled};
+                String[] data = {id, name, sname, contact, address, enrolled, pswd};
                 
                 Ptm.addRow(data);
+            }
+            
+            Statement Tstmt = (Statement) Main.con.createStatement();
+            String Tsql = "SELECT * FROM tblteacher WHERE (Name LIKE '%"+fname+"%' AND Surname LIKE '%"+fsname+"%')";
+            ResultSet Trs = Tstmt.executeQuery(Tsql);
+
+            Trs.beforeFirst();
+            DefaultTableModel Ttm = (DefaultTableModel)tblTeacher.getModel();
+            Ttm.setRowCount(0);
+
+            while (Trs.next()) {
+                String id = Integer.toString(Trs.getInt("TeacherID"));
+                String name = Trs.getString("Name");
+                String sname = Trs.getString("Surname");
+                String grade = Integer.toString(Trs.getInt("Grade"));
+                String uname = Trs.getString("Username");
+                String pswd = Trs.getString("Password");
+                
+                String[] data = {id, name, sname, grade, uname, pswd};
+                
+                Ttm.addRow(data);
             }
             
             Main.con.close();
@@ -275,7 +280,7 @@ public class SearchFrm extends javax.swing.JFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         try {
-            new LoginForm().setVisible(true);  
+            new AdminDashboard().setVisible(true);  
             dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -300,20 +305,21 @@ public class SearchFrm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SearchFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminSearchFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SearchFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminSearchFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SearchFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminSearchFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SearchFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminSearchFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SearchFrm().setVisible(true);
+                new AdminSearchFrm().setVisible(true);
             }
         });
     }
@@ -321,16 +327,16 @@ public class SearchFrm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSearch;
-    private java.awt.TextField edtId;
     private javax.swing.JTextField edtName;
     private javax.swing.JTextField edtSname;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private java.awt.Label label1;
-    private java.awt.Label label2;
     private javax.swing.JTable tblParent;
     private javax.swing.JTable tblStudent;
+    private javax.swing.JTable tblTeacher;
     // End of variables declaration//GEN-END:variables
 }

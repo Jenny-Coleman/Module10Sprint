@@ -13,7 +13,7 @@ public class Main {
     Main pro = new Main();
     pro.createConnection();
     
-    new AdminLogin().setVisible(true);
+    new Login().setVisible(true);
     }
 
     void createConnection(){

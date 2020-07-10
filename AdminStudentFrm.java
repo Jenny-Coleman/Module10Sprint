@@ -5,6 +5,7 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -18,12 +19,12 @@ import java.util.logging.Logger;
  *
  * @author Work
  */
-public class StudentsFrm extends javax.swing.JFrame {
+public class AdminStudentFrm extends javax.swing.JFrame {
 
     /**
      * Creates new form StudentsFrm
      */
-    public StudentsFrm() {
+    public AdminStudentFrm() {
         initComponents();
     }
 
@@ -48,8 +49,6 @@ public class StudentsFrm extends javax.swing.JFrame {
         label5 = new java.awt.Label();
         spnGrade = new javax.swing.JSpinner();
         btnSubmit = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        edtId = new java.awt.TextField();
         btnCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -89,10 +88,6 @@ public class StudentsFrm extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Student ID:");
-
-        edtId.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,32 +106,27 @@ public class StudentsFrm extends javax.swing.JFrame {
                         .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap(65, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel1))
-                                        .addGap(53, 53, 53))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(ckbMale))
-                                        .addGap(28, 28, 28)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(edtName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(edtSname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(dDob, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                                    .addComponent(ckbFemale)
-                                    .addComponent(spnGrade, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(edtId, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)))))
+                                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(53, 53, 53))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(ckbMale)
+                                .addGap(28, 28, 28))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(edtName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(edtSname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dDob, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                            .addComponent(ckbFemale)
+                            .addComponent(spnGrade, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(71, 71, 71))
         );
         layout.setVerticalGroup(
@@ -164,15 +154,11 @@ public class StudentsFrm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(spnGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(edtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancel)
-                    .addComponent(btnSubmit))
-                .addGap(19, 19, 19))
+                    .addComponent(btnSubmit)
+                    .addComponent(btnCancel))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -181,29 +167,7 @@ public class StudentsFrm extends javax.swing.JFrame {
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         boolean valid = true;
         
-        String sid = edtId.getText();
-        int id = 0;
-        if (sid.equals(""))
-        {
-            JOptionPane.showMessageDialog(null, "Student ID is empty");
-            valid = false;
-        }
-        else
-        {
-            for (int i = 0; i < sid.length(); i++) 
-            {
-                if (!Character.isDigit(sid.charAt(i))) 
-                {
-                    JOptionPane.showMessageDialog(null, "Student ID is invalid type (enter a number)");
-                    valid = false;
-                }  
-                else
-                {
-                    id = id*10+(sid.charAt(i) - '0');
-                }
-            }
-        }
-        
+        //setting name
         String name = edtName.getText();
         if (name.equals(""))
         {
@@ -211,6 +175,7 @@ public class StudentsFrm extends javax.swing.JFrame {
             valid = false;
         }
         
+        //setting surname
         String sname = edtSname.getText();
         if (sname.equals(""))
         {
@@ -218,10 +183,12 @@ public class StudentsFrm extends javax.swing.JFrame {
             valid = false;
         }
         
+        //setting birth date
         Date dob = dDob.getDate();
-        SimpleDateFormat dformat = new SimpleDateFormat("yyyy-mm-dd");
+        SimpleDateFormat dformat = new SimpleDateFormat("YYYY-%M-%D");
         String sDob = dformat.format(dob);
         
+        //setting gender
         char gender = 'O';
         if (ckbMale.isSelected())
             gender = 'M';
@@ -233,27 +200,40 @@ public class StudentsFrm extends javax.swing.JFrame {
             valid = false;
         }
         
+        //setting grade
         int grade = (int) spnGrade.getValue();
         
+        //setting password 
+        int num = (int) Math.round(Math.random()*100);
+        String chara = "!@#$^&";
+        Random random = new Random();
+        int index = random.nextInt(chara.length());        
+        String pswd = (sname + name.charAt(0)).toLowerCase() + Integer.toString(num) + chara.charAt(index);
+        
+        
+        //if everything is valid, try to save it in the database
         if (valid)
         {
             try {
                 Main pro = new Main();
                 pro.createConnection();
                 
-                String sql = "INSERT INTO tblstudent values (?, ?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO tblstudent(`Name`, `Surname`, `DateOfBirth`, `Gender`, `Grade`, `Password`) values (?, ?, ?, ?, ?, ?)";
                 PreparedStatement pstmt = Main.con.prepareStatement(sql);
-                pstmt.setInt(1, id);
-                pstmt.setString(2, name);
-                pstmt.setString(3, sname);
-                pstmt.setString(4, sDob);
-                pstmt.setString(5, Character.toString(gender));
-                pstmt.setInt(6, grade);
+                pstmt.setString(1, name);
+                pstmt.setString(2, sname);
+                pstmt.setString(3, sDob);
+                pstmt.setString(4, Character.toString(gender));
+                pstmt.setInt(5, grade);
+                pstmt.setString(6, pswd);
                 
                 pstmt.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Student details successfully recorded");
                 
                 Main.con.close();
+                
+                new AdminDashboard().setVisible(true);
+                dispose();
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }
@@ -272,7 +252,7 @@ public class StudentsFrm extends javax.swing.JFrame {
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         try {
-            new LoginForm().setVisible(true);
+            new AdminDashboard().setVisible(true);
             dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -296,20 +276,21 @@ public class StudentsFrm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StudentsFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminStudentFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StudentsFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminStudentFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StudentsFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminStudentFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StudentsFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminStudentFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StudentsFrm().setVisible(true);
+                new AdminStudentFrm().setVisible(true);
             }
         });
     }
@@ -320,10 +301,8 @@ public class StudentsFrm extends javax.swing.JFrame {
     private javax.swing.JCheckBox ckbFemale;
     private javax.swing.JCheckBox ckbMale;
     private org.jdesktop.swingx.JXDatePicker dDob;
-    private java.awt.TextField edtId;
     private java.awt.TextField edtName;
     private java.awt.TextField edtSname;
-    private javax.swing.JLabel jLabel1;
     private java.awt.Label label1;
     private java.awt.Label label2;
     private java.awt.Label label3;

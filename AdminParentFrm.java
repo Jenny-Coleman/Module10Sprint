@@ -1,5 +1,6 @@
 
 import java.sql.*;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -14,12 +15,12 @@ import javax.swing.JOptionPane;
  *
  * @author Work
  */
-public class ParentsFrm extends javax.swing.JFrame {
+public class AdminParentFrm extends javax.swing.JFrame {
 
     /**
      * Creates new form ParentsFrm
      */
-    public ParentsFrm() {
+    public AdminParentFrm() {
         initComponents();
     }
 
@@ -44,8 +45,6 @@ public class ParentsFrm extends javax.swing.JFrame {
         spnChildren = new javax.swing.JSpinner();
         btnSubmit = new javax.swing.JButton();
         edtAddress = new java.awt.TextField();
-        label7 = new java.awt.Label();
-        edtId = new java.awt.TextField();
         btnCancel = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -73,8 +72,6 @@ public class ParentsFrm extends javax.swing.JFrame {
             }
         });
 
-        label7.setText("Parent ID:");
-
         btnCancel.setText("Cancel");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,7 +90,7 @@ public class ParentsFrm extends javax.swing.JFrame {
                         .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(64, 64, 64)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -113,16 +110,12 @@ public class ParentsFrm extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(37, 37, 37)
-                                .addComponent(spnChildren, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
-                                .addComponent(edtId, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(spnChildren, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(98, 98, 98)
+                        .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(65, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -151,15 +144,11 @@ public class ParentsFrm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(spnChildren, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(edtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSubmit)
                     .addComponent(btnCancel))
-                .addContainerGap())
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -168,29 +157,7 @@ public class ParentsFrm extends javax.swing.JFrame {
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         boolean valid = true;
         
-        String sid = edtId.getText();
-        int id = 0;
-        if (sid.equals(""))
-        {
-            JOptionPane.showMessageDialog(null, "Student ID is empty");
-            valid = false;
-        }
-        else
-        {
-            for (int i = 0; i < sid.length(); i++) 
-            {
-                if (!Character.isDigit(sid.charAt(i))) 
-                {
-                    JOptionPane.showMessageDialog(null, "Student ID is invalid type (enter a number)");
-                    valid = false;
-                }  
-                else
-                {
-                    id = id*10+(sid.charAt(i) - '0');
-                }
-            }
-        }
-        
+        //setting name
         String name = edtName.getText();
         if (name.equals(""))
         {
@@ -198,6 +165,7 @@ public class ParentsFrm extends javax.swing.JFrame {
             valid = false;
         }
         
+        //setting surname
         String sname = edtSname.getText();
         if (sname.equals(""))
         {
@@ -205,6 +173,7 @@ public class ParentsFrm extends javax.swing.JFrame {
             valid = false;
         }
         
+        //setting the contact number
         String cont = edtContact.getText();
         if (cont.length() != 10)
         {
@@ -222,6 +191,7 @@ public class ParentsFrm extends javax.swing.JFrame {
             }
         }
         
+        //setting home address
         String address = edtAddress.getText();
         if (address.equals(""))
         {
@@ -229,25 +199,37 @@ public class ParentsFrm extends javax.swing.JFrame {
             valid = false;
         }
         
+        //setting the number of childern enrolled in the school
         int children = (int) spnChildren.getValue();
         
+        //setting password 
+        int num = (int) Math.round(Math.random()*100);
+        String chara = "!@#$^&";
+        Random random = new Random();
+        int index = random.nextInt(chara.length());        
+        String pswd = (sname + name.charAt(0)).toLowerCase() + Integer.toString(num) + chara.charAt(index);
+        
+        //if everything is valid, try to save it in the database
         if (valid)
         {
             try {          
                 Main pro = new Main();
                 pro.createConnection();
                 
-                String sql = "INSERT INTO tblparent values (?, ?, ?, ?, ?, ?)";
+                String sql = "INSERT INTO tblparent(`Name`, `Surname`, `ContactNumber`, `Address`, `NumberEnrolled`, `Password`) values (?, ?, ?, ?, ?, ?)";
                 PreparedStatement pstmt = Main.con.prepareStatement(sql);
-                pstmt.setInt(1, id);
-                pstmt.setString(2, name);
-                pstmt.setString(3, sname);
-                pstmt.setString(4, cont);
-                pstmt.setString(5, address);
-                pstmt.setInt(6, children);
+                pstmt.setString(1, name);
+                pstmt.setString(2, sname);
+                pstmt.setString(3, cont);
+                pstmt.setString(4, address);
+                pstmt.setInt(5, children);
+                pstmt.setString(6, pswd);
                 
                 pstmt.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Parents details successfully recorded");
+                
+                new AdminDashboard().setVisible(true);
+                dispose();
                 
                 Main.con.close();
             } catch (SQLException ex) {
@@ -258,7 +240,7 @@ public class ParentsFrm extends javax.swing.JFrame {
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         try {
-            new LoginForm().setVisible(true);
+            new AdminDashboard().setVisible(true);
             dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -282,20 +264,21 @@ public class ParentsFrm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ParentsFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminParentFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ParentsFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminParentFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ParentsFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminParentFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ParentsFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminParentFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ParentsFrm().setVisible(true);
+                new AdminParentFrm().setVisible(true);
             }
         });
     }
@@ -305,7 +288,6 @@ public class ParentsFrm extends javax.swing.JFrame {
     private javax.swing.JButton btnSubmit;
     private java.awt.TextField edtAddress;
     private java.awt.TextField edtContact;
-    private java.awt.TextField edtId;
     private java.awt.TextField edtName;
     private java.awt.TextField edtSname;
     private java.awt.Label label1;
@@ -314,7 +296,6 @@ public class ParentsFrm extends javax.swing.JFrame {
     private java.awt.Label label4;
     private java.awt.Label label5;
     private java.awt.Label label6;
-    private java.awt.Label label7;
     private javax.swing.JSpinner spnChildren;
     // End of variables declaration//GEN-END:variables
 }
