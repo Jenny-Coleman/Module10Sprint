@@ -1,8 +1,12 @@
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.table.*;
 
 /*
@@ -48,6 +52,11 @@ public class AdminSearchFrm extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblTeacher = new javax.swing.JTable();
+        rbtnFoundation = new javax.swing.JRadioButton();
+        rbtnIntermediate = new javax.swing.JRadioButton();
+        rbtnSenior = new javax.swing.JRadioButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblSubjects = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Search");
@@ -123,69 +132,120 @@ public class AdminSearchFrm extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tblTeacher);
 
+        rbtnFoundation.setText("Foundation phase");
+        rbtnFoundation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnFoundationActionPerformed(evt);
+            }
+        });
+
+        rbtnIntermediate.setText("Intermediate phase");
+        rbtnIntermediate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnIntermediateActionPerformed(evt);
+            }
+        });
+
+        rbtnSenior.setText("Senior");
+        rbtnSenior.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnSeniorActionPerformed(evt);
+            }
+        });
+
+        tblSubjects.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Subject", "Phase", "Students enrolled", "Students rejected"
+            }
+        ));
+        jScrollPane4.setViewportView(tblSubjects);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(250, 250, 250)
-                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(rbtnFoundation)
+                                .addGap(58, 58, 58)
+                                .addComponent(rbtnIntermediate)
+                                .addGap(66, 66, 66)
+                                .addComponent(rbtnSenior))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(104, 104, 104)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel1)
+                                                .addGap(53, 53, 53)
+                                                .addComponent(edtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel2)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(edtSname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(102, 102, 102)
+                                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(250, 250, 250)
+                                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(105, 105, 105)))
+                        .addGap(0, 12, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1)
                             .addComponent(jScrollPane2)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(245, 245, 245)
-                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(104, 104, 104)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addGap(53, 53, 53)
-                                        .addComponent(edtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(edtSname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(102, 102, 102)
-                                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane4))))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(243, 243, 243)
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(edtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(edtSname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(edtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(edtSname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rbtnFoundation)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(rbtnIntermediate)
+                        .addComponent(rbtnSenior)))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
@@ -272,6 +332,25 @@ public class AdminSearchFrm extends javax.swing.JFrame {
                 Ttm.addRow(data);
             }
             
+            Statement SSstmt = (Statement) Main.con.createStatement();
+            String SSsql = "SELECT * FROM subjectselection";
+            ResultSet SSrs = Tstmt.executeQuery(SSsql);
+
+            SSrs.beforeFirst();
+            DefaultTableModel SStm = (DefaultTableModel)tblSubjects.getModel();
+            SStm.setRowCount(0);
+
+            while (Trs.next()) {
+                String id = Integer.toString(Trs.getInt("subjectSelectionID"));
+                String subject = SSrs.getString("Subject");
+                String phase = SSrs.getString("Phase");
+                String enrolled = Integer.toString(SSrs.getInt("Enrolled"));
+                String rejected = Integer.toString(SSrs.getInt("Rejected"));               
+                String[] data = {id, subject, phase, enrolled, rejected};
+                
+                SStm.addRow(data);
+            }
+            
             Main.con.close();
         } catch (SQLException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
@@ -284,9 +363,239 @@ public class AdminSearchFrm extends javax.swing.JFrame {
             dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
-        }
-        
+        }        
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void rbtnFoundationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnFoundationActionPerformed
+        try {
+            Main pro = new Main();
+            pro.createConnection();
+            
+            Statement Sstmt = (Statement) Main.con.createStatement();
+            String Ssql = "SELECT * FROM tblstudent WHERE (Grade > 0 AND Grade < 4)";
+            ResultSet Srs = Sstmt.executeQuery(Ssql);
+
+            Srs.beforeFirst();
+            DefaultTableModel Stm = (DefaultTableModel)tblStudent.getModel();
+            Stm.setRowCount(0);
+
+            while (Srs.next()) {
+                String id = Integer.toString(Srs.getInt("StudentID"));
+                String name = Srs.getString("Name");
+                String sname = Srs.getString("Surname");
+                String dob = (Srs.getDate("DateOfBirth")).toString();
+                String gender = Srs.getString("Gender");
+                String grade = Integer.toString(Srs.getInt("Grade"));
+                String pswd = Srs.getString("Password");
+                
+                String[] data = {id, name, sname, dob, gender, grade, pswd};
+                
+                Stm.addRow(data);
+            }
+            
+            Statement Pstmt = (Statement) Main.con.createStatement();
+            DefaultTableModel Ptm = (DefaultTableModel)tblParent.getModel();
+            Ptm.setRowCount(0);
+            
+            Statement Tstmt = (Statement) Main.con.createStatement();
+            String Tsql = "SELECT * FROM tblteacher WHERE (Grade > 0 AND Grade < 4)";
+            ResultSet Trs = Tstmt.executeQuery(Tsql);
+
+            Trs.beforeFirst();
+            DefaultTableModel Ttm = (DefaultTableModel)tblTeacher.getModel();
+            Ttm.setRowCount(0);
+
+            while (Trs.next()) {
+                String id = Integer.toString(Trs.getInt("TeacherID"));
+                String name = Trs.getString("Name");
+                String sname = Trs.getString("Surname");
+                String grade = Integer.toString(Trs.getInt("Grade"));
+                String uname = Trs.getString("Username");
+                String pswd = Trs.getString("Password");
+                
+                String[] data = {id, name, sname, grade, uname, pswd};
+                
+                Ttm.addRow(data);
+            }
+            
+            Statement SSstmt = (Statement) Main.con.createStatement();
+            String SSsql = "SELECT * FROM subjectselection WHERE (Phase LIKE '6 - 9')";
+            ResultSet SSrs = Tstmt.executeQuery(SSsql);
+
+            SSrs.beforeFirst();
+            DefaultTableModel SStm = (DefaultTableModel)tblSubjects.getModel();
+            SStm.setRowCount(0);
+
+            while (Trs.next()) {
+                String id = Integer.toString(Trs.getInt("subjectSelectionID"));
+                String subject = SSrs.getString("Subject");
+                String phase = SSrs.getString("Phase");
+                String enrolled = Integer.toString(SSrs.getInt("Enrolled"));
+                String rejected = Integer.toString(SSrs.getInt("Rejected"));               
+                String[] data = {id, subject, phase, enrolled, rejected};
+                
+                SStm.addRow(data);
+            }
+            
+            Main.con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_rbtnFoundationActionPerformed
+
+    private void rbtnIntermediateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnIntermediateActionPerformed
+        try {
+            Main pro = new Main();
+            pro.createConnection();
+            
+            Statement Sstmt = (Statement) Main.con.createStatement();
+            String Ssql = "SELECT * FROM tblstudent WHERE (Grade > 3 AND Grade < 9)";
+            ResultSet Srs = Sstmt.executeQuery(Ssql);
+
+            Srs.beforeFirst();
+            DefaultTableModel Stm = (DefaultTableModel)tblStudent.getModel();
+            Stm.setRowCount(0);
+
+            while (Srs.next()) {
+                String id = Integer.toString(Srs.getInt("StudentID"));
+                String name = Srs.getString("Name");
+                String sname = Srs.getString("Surname");
+                String dob = (Srs.getDate("DateOfBirth")).toString();
+                String gender = Srs.getString("Gender");
+                String grade = Integer.toString(Srs.getInt("Grade"));
+                String pswd = Srs.getString("Password");
+                
+                String[] data = {id, name, sname, dob, gender, grade, pswd};
+                
+                Stm.addRow(data);
+            }
+            
+            Statement Pstmt = (Statement) Main.con.createStatement();
+            DefaultTableModel Ptm = (DefaultTableModel)tblParent.getModel();
+            Ptm.setRowCount(0);
+            
+            Statement Tstmt = (Statement) Main.con.createStatement();
+            String Tsql = "SELECT * FROM tblteacher WHERE (Grade > 3 AND Grade < 9)";
+            ResultSet Trs = Tstmt.executeQuery(Tsql);
+
+            Trs.beforeFirst();
+            DefaultTableModel Ttm = (DefaultTableModel)tblTeacher.getModel();
+            Ttm.setRowCount(0);
+
+            while (Trs.next()) {
+                String id = Integer.toString(Trs.getInt("TeacherID"));
+                String name = Trs.getString("Name");
+                String sname = Trs.getString("Surname");
+                String grade = Integer.toString(Trs.getInt("Grade"));
+                String uname = Trs.getString("Username");
+                String pswd = Trs.getString("Password");
+                
+                String[] data = {id, name, sname, grade, uname, pswd};
+                
+                Ttm.addRow(data);
+            }
+            
+            Statement SSstmt = (Statement) Main.con.createStatement();
+            String SSsql = "SELECT * FROM subjectselection WHERE (Phase LIKE '10 - 14')";
+            ResultSet SSrs = Tstmt.executeQuery(SSsql);
+
+            SSrs.beforeFirst();
+            DefaultTableModel SStm = (DefaultTableModel)tblSubjects.getModel();
+            SStm.setRowCount(0);
+
+            while (Trs.next()) {
+                String id = Integer.toString(Trs.getInt("subjectSelectionID"));
+                String subject = SSrs.getString("Subject");
+                String phase = SSrs.getString("Phase");
+                String enrolled = Integer.toString(SSrs.getInt("Enrolled"));
+                String rejected = Integer.toString(SSrs.getInt("Rejected"));               
+                String[] data = {id, subject, phase, enrolled, rejected};
+                
+                SStm.addRow(data);
+            }
+            
+            Main.con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_rbtnIntermediateActionPerformed
+
+    private void rbtnSeniorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnSeniorActionPerformed
+        try {
+            Main pro = new Main();
+            pro.createConnection();
+            
+            Statement Sstmt = (Statement) Main.con.createStatement();
+            String Ssql = "SELECT * FROM tblstudent WHERE (Grade > 8)";
+            ResultSet Srs = Sstmt.executeQuery(Ssql);
+
+            Srs.beforeFirst();
+            DefaultTableModel Stm = (DefaultTableModel)tblStudent.getModel();
+            Stm.setRowCount(0);
+
+            while (Srs.next()) {
+                String id = Integer.toString(Srs.getInt("StudentID"));
+                String name = Srs.getString("Name");
+                String sname = Srs.getString("Surname");
+                String dob = (Srs.getDate("DateOfBirth")).toString();
+                String gender = Srs.getString("Gender");
+                String grade = Integer.toString(Srs.getInt("Grade"));
+                String pswd = Srs.getString("Password");
+                
+                String[] data = {id, name, sname, dob, gender, grade, pswd};
+                
+                Stm.addRow(data);
+            }
+            
+            Statement Pstmt = (Statement) Main.con.createStatement();
+            DefaultTableModel Ptm = (DefaultTableModel)tblParent.getModel();
+            Ptm.setRowCount(0);
+            
+            Statement Tstmt = (Statement) Main.con.createStatement();
+            String Tsql = "SELECT * FROM tblteacher WHERE (Grade > 8)";
+            ResultSet Trs = Tstmt.executeQuery(Tsql);
+
+            Trs.beforeFirst();
+            DefaultTableModel Ttm = (DefaultTableModel)tblTeacher.getModel();
+            Ttm.setRowCount(0);
+
+            while (Trs.next()) {
+                String id = Integer.toString(Trs.getInt("TeacherID"));
+                String name = Trs.getString("Name");
+                String sname = Trs.getString("Surname");
+                String grade = Integer.toString(Trs.getInt("Grade"));
+                String uname = Trs.getString("Username");
+                String pswd = Trs.getString("Password");
+                
+                String[] data = {id, name, sname, grade, uname, pswd};
+                
+                Ttm.addRow(data);
+            }
+            
+            Statement SSstmt = (Statement) Main.con.createStatement();
+            String SSsql = "SELECT * FROM subjectselection WHERE (Phase LIKE '15 - 17')";
+            ResultSet SSrs = Tstmt.executeQuery(SSsql);
+
+            SSrs.beforeFirst();
+            DefaultTableModel SStm = (DefaultTableModel)tblSubjects.getModel();
+            SStm.setRowCount(0);
+
+            while (Trs.next()) {
+                String id = Integer.toString(Trs.getInt("subjectSelectionID"));
+                String subject = SSrs.getString("Subject");
+                String phase = SSrs.getString("Phase");
+                String enrolled = Integer.toString(SSrs.getInt("Enrolled"));
+                String rejected = Integer.toString(SSrs.getInt("Rejected"));               
+                String[] data = {id, subject, phase, enrolled, rejected};
+                
+                SStm.addRow(data);
+            }
+            
+            Main.con.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_rbtnSeniorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -334,9 +643,14 @@ public class AdminSearchFrm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private java.awt.Label label1;
+    private javax.swing.JRadioButton rbtnFoundation;
+    private javax.swing.JRadioButton rbtnIntermediate;
+    private javax.swing.JRadioButton rbtnSenior;
     private javax.swing.JTable tblParent;
     private javax.swing.JTable tblStudent;
+    private javax.swing.JTable tblSubjects;
     private javax.swing.JTable tblTeacher;
     // End of variables declaration//GEN-END:variables
 }

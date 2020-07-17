@@ -10,10 +10,10 @@ public class Main {
     public static Connection con;
 
     public static void main(String[] args) {
-    Main pro = new Main();
-    pro.createConnection();
-    
-    new Login().setVisible(true);
+        Main pro = new Main();
+        pro.createConnection();
+
+        new Login().setVisible(true);
     }
 
     void createConnection(){
