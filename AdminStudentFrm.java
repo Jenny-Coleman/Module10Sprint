@@ -50,6 +50,7 @@ public class AdminStudentFrm extends javax.swing.JFrame {
         spnGrade = new javax.swing.JSpinner();
         btnSubmit = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
+        proBar = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Add Student");
@@ -103,9 +104,10 @@ public class AdminStudentFrm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(108, 108, 108)
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 42, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(65, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,6 +130,10 @@ public class AdminStudentFrm extends javax.swing.JFrame {
                             .addComponent(spnGrade, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(71, 71, 71))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(114, 114, 114)
+                .addComponent(proBar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,11 +160,13 @@ public class AdminStudentFrm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(label5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(spnGrade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(proBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSubmit)
                     .addComponent(btnCancel))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -173,6 +181,8 @@ public class AdminStudentFrm extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "First name(s) is empty");
             valid = false;
+        } else {
+            proBar.setValue(proBar.getValue() + 20);
         }
         
         //setting surname
@@ -181,36 +191,40 @@ public class AdminStudentFrm extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "Surname is empty");
             valid = false;
+        } else {
+            proBar.setValue(proBar.getValue() + 20);
         }
         
         //setting birth date
         Date dob = dDob.getDate();
         SimpleDateFormat dformat = new SimpleDateFormat("YYYY-%M-%D");
         String sDob = dformat.format(dob);
-        
+        proBar.setValue(proBar.getValue() + 20);
+                
         //setting gender
         char gender = 'O';
-        if (ckbMale.isSelected())
+        if (ckbMale.isSelected()) {
             gender = 'M';
-        else if (ckbFemale.isSelected())
+            proBar.setValue(proBar.getValue() + 20);
+        } else if (ckbFemale.isSelected()) {
             gender = 'F';
-        else
-        {
+            proBar.setValue(proBar.getValue() + 20);
+        } else {
             JOptionPane.showMessageDialog(null, "Gender not selected");
             valid = false;
         }
         
         //setting grade
         int grade = (int) spnGrade.getValue();
-        
+        proBar.setValue(proBar.getValue() + 20);
+                
         //setting password 
         int num = (int) Math.round(Math.random()*100);
         String chara = "!@#$^&";
         Random random = new Random();
         int index = random.nextInt(chara.length());        
         String pswd = (sname + name.charAt(0)).toLowerCase() + Integer.toString(num) + chara.charAt(index);
-        
-        
+                
         //if everything is valid, try to save it in the database
         if (valid)
         {
@@ -308,6 +322,7 @@ public class AdminStudentFrm extends javax.swing.JFrame {
     private java.awt.Label label3;
     private java.awt.Label label4;
     private java.awt.Label label5;
+    private javax.swing.JProgressBar proBar;
     private javax.swing.JSpinner spnGrade;
     // End of variables declaration//GEN-END:variables
 }

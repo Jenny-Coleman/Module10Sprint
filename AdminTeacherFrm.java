@@ -48,6 +48,7 @@ public class AdminTeacherFrm extends javax.swing.JFrame {
         edtUname = new java.awt.TextField();
         edtPswd = new java.awt.TextField();
         ckbAdmin = new javax.swing.JCheckBox();
+        proBar = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -133,14 +134,16 @@ public class AdminTeacherFrm extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(28, 28, 28)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ckbAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(btnCancel)
                                             .addComponent(edtUname, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(edtPswd, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE))))))
+                                            .addComponent(edtPswd, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(proBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(ckbAdmin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)))))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -172,7 +175,9 @@ public class AdminTeacherFrm extends javax.swing.JFrame {
                     .addComponent(edtPswd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ckbAdmin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(proBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAdd)
                     .addComponent(btnCancel))
@@ -204,6 +209,8 @@ public class AdminTeacherFrm extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "First name(s) is empty");
             valid = false;
+        } else {
+            proBar.setValue(proBar.getValue() + 20);
         }
         
         //setting surname
@@ -212,10 +219,13 @@ public class AdminTeacherFrm extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "Surname is empty");
             valid = false;
+        } else {
+            proBar.setValue(proBar.getValue() + 20);
         }
                 
         //setting grade
         int grade = (int) spnGrade.getValue();
+        proBar.setValue(proBar.getValue() + 20);
         
         //setting username
         String uname = edtUname.getText();
@@ -223,6 +233,8 @@ public class AdminTeacherFrm extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "Username is empty");
             valid = false;
+        } else {
+            proBar.setValue(proBar.getValue() + 20);
         }
         
         //setting password
@@ -231,6 +243,8 @@ public class AdminTeacherFrm extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "Password is empty");
             valid = false;
+        } else {
+            proBar.setValue(proBar.getValue() + 20);
         }
         
         //if everything is valid, try to save it in the database
@@ -340,6 +354,7 @@ public class AdminTeacherFrm extends javax.swing.JFrame {
     private java.awt.Label label2;
     private java.awt.Label label3;
     private java.awt.Label label4;
+    private javax.swing.JProgressBar proBar;
     private javax.swing.JSpinner spnGrade;
     // End of variables declaration//GEN-END:variables
 }

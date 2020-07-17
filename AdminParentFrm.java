@@ -46,6 +46,7 @@ public class AdminParentFrm extends javax.swing.JFrame {
         btnSubmit = new javax.swing.JButton();
         edtAddress = new java.awt.TextField();
         btnCancel = new javax.swing.JButton();
+        proBar = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Add Parent");
@@ -112,10 +113,13 @@ public class AdminParentFrm extends javax.swing.JFrame {
                                 .addGap(37, 37, 37)
                                 .addComponent(spnChildren, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
+                        .addGap(93, 93, 93)
                         .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(122, 122, 122)
+                        .addComponent(proBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(65, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -144,11 +148,13 @@ public class AdminParentFrm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(label6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(spnChildren, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(proBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSubmit)
                     .addComponent(btnCancel))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -163,6 +169,8 @@ public class AdminParentFrm extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "First name(s) is empty");
             valid = false;
+        } else {
+            proBar.setValue(proBar.getValue() + 20);
         }
         
         //setting surname
@@ -171,6 +179,8 @@ public class AdminParentFrm extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "Surname is empty");
             valid = false;
+        } else {
+            proBar.setValue(proBar.getValue() + 20);
         }
         
         //setting the contact number
@@ -187,6 +197,8 @@ public class AdminParentFrm extends javax.swing.JFrame {
               if (!Character.isDigit(cont.charAt(i))) 
               {
                   valid = false;
+              } else {
+                proBar.setValue(proBar.getValue() + 2);
               }                
             }
         }
@@ -197,11 +209,14 @@ public class AdminParentFrm extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null, "PLease enter your address");
             valid = false;
+        } else {
+            proBar.setValue(proBar.getValue() + 20);
         }
         
         //setting the number of childern enrolled in the school
-        int children = (int) spnChildren.getValue();
-        
+        int children = (int) spnChildren.getValue();        
+        proBar.setValue(proBar.getValue() + 20);
+                
         //setting password 
         int num = (int) Math.round(Math.random()*100);
         String chara = "!@#$^&";
@@ -296,6 +311,7 @@ public class AdminParentFrm extends javax.swing.JFrame {
     private java.awt.Label label4;
     private java.awt.Label label5;
     private java.awt.Label label6;
+    private javax.swing.JProgressBar proBar;
     private javax.swing.JSpinner spnChildren;
     // End of variables declaration//GEN-END:variables
 }
